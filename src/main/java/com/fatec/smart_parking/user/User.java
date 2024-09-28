@@ -86,4 +86,12 @@ public class User implements UserDetails{
         this.password = password;
         this.role = Role.CLIENT;
     }
+
+    public User(String email, String name, String password,Role role, Boolean enabled) {
+        this.email = email;
+        this.name = name;
+        this.password = password;
+        this.role = role;
+        this.enabled = enabled;
+    }
 }

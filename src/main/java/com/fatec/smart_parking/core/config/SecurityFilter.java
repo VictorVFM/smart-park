@@ -46,11 +46,6 @@ public class SecurityFilter extends OncePerRequestFilter {
         filterChain.doFilter(request, response);
     }
 
-    private String recoverApiKey(HttpServletRequest request){
-        var authHeader = request.getHeader("X-API-KEY");
-        if (authHeader == null) return null;
-        return authHeader;
-    }
 
     private String recoverToken(HttpServletRequest request) {
         var authHeader = request.getHeader("Authorization");

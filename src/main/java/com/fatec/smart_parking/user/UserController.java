@@ -1,5 +1,6 @@
 package com.fatec.smart_parking.user;
 
+import com.fatec.smart_parking.core.authentication.LoginResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,11 +31,10 @@ public class UserController {
     }
 
 
-    @PutMapping("/{id}")
-    public ResponseEntity<UserDTO> update(@PathVariable Long id, @RequestBody User newUser) {
-        UserDTO user = userService.update(id, newUser);
-        
-        return ResponseEntity.status(HttpStatus.CREATED).body(user);
+    @PutMapping
+    public ResponseEntity<LoginResponseDTO> update(@RequestBody UserUpdateDTO updateUserDTO) {
+        LoginResponseDTO token = userService.update(updateUserDTO);
+        return ResponseEntity.status(HttpStatus.OK).body(token);
     }
 
     @DeleteMapping("/{id}")
@@ -48,6 +48,8 @@ public class UserController {
        UserDTO userDTO = userService.getCurrentUser();
         return ResponseEntity.ok().body(userDTO);
     }
+
+
 
 
 }
